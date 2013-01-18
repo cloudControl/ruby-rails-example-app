@@ -47,5 +47,10 @@ module SampleApp
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Do not initialize on precompile in the build process
+    # as this can fail, e.g. if database is being accessed in the process
+    # and there is no benefit in doing it in build process anyway
+    config.assets.initialize_on_precompile = false if ENV['BUILDPACK_RUNNING']
   end
 end
